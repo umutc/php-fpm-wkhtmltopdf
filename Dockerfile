@@ -1,4 +1,4 @@
-FROM php:5.5.9-fpm
+FROM php:5.6-fpm
 
 MAINTAINER Umut ÇELİK <mail@umutcelik.com.tr>
 
