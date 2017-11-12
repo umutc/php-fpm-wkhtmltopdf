@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM php:7.1.11-fpm
 
 MAINTAINER Umut ÇELİK <mail@umutcelik.com.tr>
 
@@ -40,3 +40,14 @@ RUN apt-get update && apt-get upgrade -y \
     && pecl install redis && docker-php-ext-enable redis \
     && yes '' | pecl install imagick && docker-php-ext-enable imagick
 
+RUN apt-get update \
+    && apt-get install -y \
+        curl \
+        libxrender1 \
+        libfontconfig \
+        libxtst6 \
+        xz-utils
+
+RUN curl "https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz" -L -o "wkhtmltopdf.tar.xz"
+RUN tar Jxvf wkhtmltopdf.tar.xz
+RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
