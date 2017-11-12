@@ -22,7 +22,7 @@ RUN apt-get update && apt-get upgrade -y \
         dba \
         gettext \
         #ereg \ 
-        mhash \
+        #mhash \
         mysql \
         iconv \
         mbstring \
