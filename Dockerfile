@@ -1,4 +1,4 @@
-FROM php:latest-fpm
+FROM php:7.1.11-fpm
 
 MAINTAINER Umut ÇELİK <mail@umutcelik.com.tr>
 
@@ -21,6 +21,7 @@ RUN apt-get update && apt-get upgrade -y \
         calendar \
         dba \
         gettext \
+        #ereg \ 
         mhash \
         mysql \
         iconv \
