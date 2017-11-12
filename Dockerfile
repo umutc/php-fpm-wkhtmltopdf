@@ -7,8 +7,6 @@ RUN apt-get update && apt-get upgrade -y \
     libjpeg62-turbo-dev \
     libpq-dev \
     libmagickwand-dev \
-    libmcrypt-dev \
-    libmcrypt-dev \
     libpng12-dev \
     libmemcached-dev \
     libssl-dev \
@@ -18,37 +16,37 @@ RUN apt-get update && apt-get upgrade -y \
     libicu-dev \
     g++ \
     && docker-php-ext-install \
-        bz2 \
+        bcmath \
+        calendar \
+        dba \
+        gettext \
         iconv \
         mbstring \
+        pcntl \
+        shmop \
         exif \
-        mcrypt \
         mysqli \
-        pgsql \
         pdo_mysql \
-        pdo_pgsql \
+        opcache \
         soap \
+        sockets \
+        sysvmsg \
+        sysvsem \
+        sysvshm \
+        wddx \
         zip \
     && docker-php-ext-configure gd \
         --with-freetype-dir=/usr/include/ \
         --with-jpeg-dir=/usr/include/ \
         --with-png-dir=/usr/include/ \
     && docker-php-ext-install gd \
-    && docker-php-ext-configure intl  \
-    && docker-php-ext-install intl \
-    && pecl install xdebug && docker-php-ext-enable xdebug \
-    && pecl install mongodb && docker-php-ext-enable mongodb \
-    && pecl install redis && docker-php-ext-enable redis \
-    && yes '' | pecl install imagick && docker-php-ext-enable imagick
-
-RUN apt-get update \
     && apt-get install -y \
         curl \
         libxrender1 \
         libfontconfig \
         libxtst6 \
-        xz-utils
-
-RUN curl "https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz" -L -o "wkhtmltopdf.tar.xz"
-RUN tar Jxvf wkhtmltopdf.tar.xz
-RUN mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+        xz-utils \
+    && curl "https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz" -L -o "wkhtmltopdf.tar.xz" \
+    && tar Jxvf wkhtmltopdf.tar.xz \
+    && mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+    
