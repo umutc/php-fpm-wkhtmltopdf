@@ -21,6 +21,7 @@ RUN apt-get update && apt-get upgrade -y \
         bz2 \
         iconv \
         mbstring \
+        exif \
         mcrypt \
         mysqli \
         pgsql \
