@@ -23,7 +23,7 @@ RUN apt-get update && apt-get upgrade -y \
         gettext \
         #ereg \ 
         #mhash \
-        mysql \
+        #mysql \
         iconv \
         mbstring \
         pcntl \
