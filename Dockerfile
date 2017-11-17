@@ -44,6 +44,7 @@ RUN apt-get update && apt-get upgrade -y \
         --with-jpeg-dir=/usr/include/ \
         --with-png-dir=/usr/include/ \
     && docker-php-ext-install gd \
+    && pecl install redis && docker-php-ext-enable redis \
     && apt-get install -y \
         curl \
         libxrender1 \
