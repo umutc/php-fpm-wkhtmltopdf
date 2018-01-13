@@ -44,14 +44,20 @@ RUN apt-get update && apt-get upgrade -y \
         --with-jpeg-dir=/usr/include/ \
         --with-png-dir=/usr/include/ \
     && docker-php-ext-install gd \
-    && pecl install redis && docker-php-ext-enable redis \
+    && pecl install redis zmq-beta \
+    && docker-php-ext-enable redis zmq \
     && apt-get install -y \
         curl \
         libxrender1 \
         libfontconfig \
         libxtst6 \
         xz-utils \
+        zlib1g-dev \
+        libzmq-dev \
     && curl "https://downloads.wkhtmltopdf.org/0.12/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz" -L -o "wkhtmltopdf.tar.xz" \
     && tar Jxvf wkhtmltopdf.tar.xz \
     && mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
+
+ADD install_composer.sh /install_composer.sh
+RUN /install_composer.sh && rm /install_composer.sh
     
