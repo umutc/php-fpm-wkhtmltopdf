@@ -2,13 +2,6 @@ FROM php:7.1.11-fpm
 
 MAINTAINER Umut ÇELİK <mail@umutcelik.com.tr>
 
-RUN apt-get update && apt-get install -y zlib1g-dev libzmq-dev wget git \
-    && pecl install zmq-beta \
-    && docker-php-ext-install zip \
-    && docker-php-ext-enable zmq
-ADD install_composer.sh /install_composer.sh
-RUN /install_composer.sh && rm /install_composer.sh
-
 RUN apt-get update && apt-get upgrade -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -28,7 +21,7 @@ RUN apt-get update && apt-get upgrade -y \
         calendar \
         dba \
         gettext \
-        #ereg \ 
+        #ereg \
         #mhash \
         #mysql \
         iconv \
@@ -62,5 +55,9 @@ RUN apt-get update && apt-get upgrade -y \
     && tar Jxvf wkhtmltopdf.tar.xz \
     && mv wkhtmltox/bin/wkhtmltopdf /usr/local/bin/wkhtmltopdf
 
-
-    
+RUN apt-get update && apt-get install -y zlib1g-dev libzmq-dev wget git \
+    && pecl install zmq-beta \
+    && docker-php-ext-install zip \
+    && docker-php-ext-enable zmq
+ADD install_composer.sh /install_composer.sh
+RUN /install_composer.sh && rm /install_composer.sh
