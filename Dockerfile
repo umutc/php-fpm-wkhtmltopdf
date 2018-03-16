@@ -2,6 +2,12 @@ FROM php:7.1.11-fpm
 
 MAINTAINER Umut ÇELİK <mail@umutcelik.com.tr>
 
+RUN apt-get update -y
+RUN apt-get install -y libgmp-dev re2c libmhash-dev libmcrypt-dev file
+RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
+RUN docker-php-ext-configure gmp
+RUN docker-php-ext-install gmp
+
 RUN apt-get update && apt-get upgrade -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
