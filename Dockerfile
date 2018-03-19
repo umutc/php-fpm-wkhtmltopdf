@@ -2,6 +2,10 @@ FROM php:7.1.11-fpm
 
 MAINTAINER Umut ÇELİK <mail@umutcelik.com.tr>
 
+RUN apt-get update && apt-get install -y zlib1g-dev libicu-dev g++
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install intl
+
 RUN apt-get update -y
 RUN apt-get install -y libgmp-dev re2c libmhash-dev libmcrypt-dev file
 RUN ln -s /usr/include/x86_64-linux-gnu/gmp.h /usr/local/include/
